@@ -194,6 +194,13 @@ trait ExportableTrait {
         "receiverTransactionReference", "receiverTransactionDate",
         "fileReference", "fileDate", "sequenceNumber"
       ]);
+      
+      if (!is_null($item['lineItemPeriod'])) {
+        $xml .= '<LineItemPeriod>' .
+            '<StartDate>' . $item['lineItemPeriod'][0]['StartDate'] . '</StartDate>' .
+            '<EndDate>' . $item['lineItemPeriod'][0]['EndDate'] . '</EndDate>' .
+          '</LineItemPeriod>';
+      }
 
       // Add required fields
       $xml .= '<ItemDescription>' . $tools->escape($item['name']) . '</ItemDescription>' .
