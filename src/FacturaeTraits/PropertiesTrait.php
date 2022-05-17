@@ -579,7 +579,7 @@ trait PropertiesTrait {
    * @param  float                     $taxRate   Tax rate
    * @return Facturae                             Invoice instance
    */
-  public function addItem($desc, $unitPrice=null, $quantity=1, $taxType=null, $taxRate=null) {
+  public function addItem($desc, $unitPrice=null, $quantity=1, $taxType=null, $taxRate=null, $dates=null) {
     if ($desc instanceOf FacturaeItem) {
       $item = $desc;
     } else {
@@ -588,7 +588,8 @@ trait PropertiesTrait {
         "description" => is_array($desc) ? $desc[1] : null,
         "quantity" => $quantity,
         "unitPrice" => $unitPrice,
-        "taxes" => array($taxType => $taxRate)
+        "taxes" => array($taxType => $taxRate),
+        "lineItemPeriod" => array($dates)
       ]);
     }
     $this->items[] = $item;
