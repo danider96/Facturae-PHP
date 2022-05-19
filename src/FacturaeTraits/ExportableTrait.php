@@ -196,10 +196,14 @@ trait ExportableTrait {
       ]);
       
       if (!is_null($item['lineItemPeriod'])) {
-        $xml .= '<LineItemPeriod>' .
-            '<StartDate>' . $item['lineItemPeriod'][0]['StartDate'] . '</StartDate>' .
-            '<EndDate>' . $item['lineItemPeriod'][0]['EndDate'] . '</EndDate>' .
-          '</LineItemPeriod>';
+        foreach ($item['lineItemPeriod'] as $itemperiod) {
+          if (!is_null($itemperiod)) {
+            $xml .= '<LineItemPeriod>' .
+                '<StartDate>' . $itemperiod['StartDate'] . '</StartDate>' .
+                '<EndDate>' . $itemperiod['EndDate'] . '</EndDate>' .
+              '</LineItemPeriod>';
+          }
+        }
       }
 
       // Add required fields
