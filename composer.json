@@ -1,5 +1,5 @@
 {
-    "name": "josemmo/facturae-php",
+    "name": "danider96/facturae-php",
     "description": "Librería para la generación, firma y envío de facturas electrónicas",
     "keywords": ["facturae", "xades", "face", "faceb2b"],
     "license": "MIT",
