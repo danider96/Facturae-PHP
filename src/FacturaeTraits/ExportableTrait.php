@@ -195,17 +195,6 @@ trait ExportableTrait {
         "fileReference", "fileDate", "sequenceNumber"
       ]);
       
-      if (!is_null($item['lineItemPeriod'])) {
-        foreach ($item['lineItemPeriod'] as $itemperiod) {
-          if (!is_null($itemperiod)) {
-            $xml .= '<LineItemPeriod>' .
-                '<StartDate>' . $itemperiod['StartDate'] . '</StartDate>' .
-                '<EndDate>' . $itemperiod['EndDate'] . '</EndDate>' .
-              '</LineItemPeriod>';
-          }
-        }
-      }
-
       // Add required fields
       $xml .= '<ItemDescription>' . $tools->escape($item['name']) . '</ItemDescription>' .
         '<Quantity>' . $this->pad($item['quantity'], 'Item/Quantity') . '</Quantity>' .
@@ -271,6 +260,17 @@ trait ExportableTrait {
         "description" => "AdditionalLineItemInformation",
         "articleCode"
       ]);
+      
+      if (!is_null($item['lineItemPeriod'])) {
+        foreach ($item['lineItemPeriod'] as $itemperiod) {
+          if (!is_null($itemperiod)) {
+            $xml .= '<LineItemPeriod>' .
+                '<StartDate>' . $itemperiod['StartDate'] . '</StartDate>' .
+                '<EndDate>' . $itemperiod['EndDate'] . '</EndDate>' .
+              '</LineItemPeriod>';
+          }
+        }
+      }
 
       // Close invoice line
       $xml .= '</InvoiceLine>';
